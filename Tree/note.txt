@@ -1,0 +1,257 @@
+Tree (Ağaç) veri yapısını temel özellikleriyle açıklayayım:
+
+**Tree (Ağaç) Nedir?**
+- Hiyerarşik bir veri yapısıdır
+- Düğümler (nodes) ve bu düğümleri birbirine bağlayan kenarlardan (edges) oluşur
+- Döngü (cycle) içermez
+- Bir root (kök) düğümü ile başlar
+
+**Temel Kavramlar:**
+1. **Root (Kök):** 
+   - Ağacın en tepesindeki düğüm
+   - Kendisinden üstte başka düğüm yoktur
+
+2. **Node (Düğüm):**
+   - Parent (Ebeveyn): Bir üstteki bağlı düğüm
+   - Child (Çocuk): Bir alttaki bağlı düğümler
+   - Sibling (Kardeş): Aynı parent'a sahip düğümler
+   - Leaf (Yaprak): Çocuğu olmayan düğümler
+
+3. **Derinlik ve Yükseklik:**
+   - Depth (Derinlik): Root'tan o düğüme olan uzaklık
+   - Height (Yükseklik): O düğümden en uzak leaf'e olan mesafe
+
+**Örnek Tree Yapısı:**
+```
+       A        -> Root (Level 0)
+      / \
+     B   C      -> Level 1
+    / \   \
+   D   E   F    -> Level 2
+      /
+     G          -> Level 3 (Leaf)
+```
+
+**Tree'nin Yaygın Kullanım Alanları:**
+1. Dosya sistemi organizasyonu
+2. Database indeksleme
+3. Syntax tree'ler (programlama dillerinde)
+4. Aile soyağaçları
+5. Organizasyon şemaları
+
+**Tree Çeşitleri:**
+1. Binary Tree (Her düğümün en fazla 2 çocuğu olabilir)
+2. Binary Search Tree (Solda küçük, sağda büyük değerler)
+3. AVL Tree (Self-balancing binary search tree)
+4. Red-Black Tree (Self-balancing binary search tree)
+5. B-Tree (Çok yollu arama ağacı)
+
+**Temel Operasyonlar:**
+1. Insertion (Ekleme)
+2. Deletion (Silme)
+3. Traversal (Dolaşma):
+   - Pre-order (Kök-Sol-Sağ)
+   - In-order (Sol-Kök-Sağ)
+   - Post-order (Sol-Sağ-Kök)
+   - Level-order (Seviye seviye)
+
+**Avantajları:**
+- Hiyerarşik veri saklama
+- Hızlı arama (özellikle BST'de)
+- Kolay ekleme/silme
+
+**Dezavantajları:**
+- Ekstra bellek kullanımı
+- Bazı operasyonlarda dengesizlik problemi
+- Karmaşık balancing algoritmaları gerekebilir
+
+
+--------
+
+Temel ve yaygın olarak bilinmesi gereken tree yapılarını önem sırasına göre sıralıyorum:
+
+1. **Binary Tree (İkili Ağaç)**
+   - En temel tree yapısı
+   - Her düğümün en fazla 2 çocuğu olabilir
+   - Diğer tree yapılarının temeli
+   - Mutlaka bilinmeli
+
+2. **Binary Search Tree (BST)**
+   - En çok kullanılan tree yapısı
+   - Arama, ekleme ve silme işlemleri hızlı
+   - Sol alt ağaç < Kök < Sağ alt ağaç
+   - Temel veri yapıları mülakatlarında sıkça sorulur
+
+3. **AVL Tree**
+   - Self-balancing BST
+   - Dengeli ağaç yapısı
+   - Height-balanced tree'lerin anlaşılması için önemli
+
+4. **Red-Black Tree**
+   - Pratik uygulamalarda çok kullanılır
+   - C++ STL'de map ve set yapıları Red-Black tree kullanır
+   - Self-balancing BST'nin gerçek hayatta en çok kullanılan versiyonu
+
+5. **Heap (Binary Heap)**
+   - Priority Queue implementasyonu için kullanılır
+   - Min Heap ve Max Heap
+   - Sıralama algoritmaları için önemli (Heap Sort)
+
+Bu 5 tree yapısı:
+- İş mülakatlarında
+- Algoritma sorularında
+- Gerçek hayat uygulamalarında
+en çok karşılaşacağınız yapılardır. Öncelikle bunlara odaklanmanızı öneririm.
+
+-----------------
+
+**Binary Tree (İkili Ağaç)** yapısını detaylı açıklıyorum:
+
+**1. Tanım:**
+- Her düğümün en fazla 2 çocuğu olabilir
+- Her düğüm 3 bilgi tutar:
+  - Data (Veri)
+  - Left child pointer (Sol çocuk işaretçisi)
+  - Right child pointer (Sağ çocuk işaretçisi)
+
+**2. Temel Kavramlar:**
+```
+       1         -> Root (Kök)
+      / \
+     2   3      -> Internal Nodes (İç düğümler)
+    / \   \
+   4   5   6    -> Leaf Nodes (Yaprak düğümler)
+```
+
+**3. Binary Tree Türleri:**
+
+a) **Full Binary Tree**
+- Her düğümün 0 veya 2 çocuğu vardır
+```
+    1
+   / \
+  2   3
+ / \
+4   5
+```
+
+b) **Complete Binary Tree**
+- Son seviye hariç tüm seviyeler dolu
+- Son seviye soldan sağa doldurulur
+```
+    1
+   / \
+  2   3
+ / \  /
+4   5 6
+```
+
+c) **Perfect Binary Tree**
+- Tüm iç düğümlerin 2 çocuğu var
+- Tüm yapraklar aynı seviyede
+```
+    1
+   / \
+  2   3
+ / \ / \
+4  5 6  7
+```
+
+**4. Temel Operasyonlar:**
+
+a) **Traversal (Dolaşma)**
+```cpp
+struct Node {
+    int data;
+    Node* left;
+    Node* right;
+};
+
+// Inorder (Sol-Kök-Sağ)
+void inorder(Node* root) {
+    if (root != NULL) {
+        inorder(root->left);
+        cout << root->data << " ";
+        inorder(root->right);
+    }
+}
+
+// Preorder (Kök-Sol-Sağ)
+void preorder(Node* root) {
+    if (root != NULL) {
+        cout << root->data << " ";
+        preorder(root->left);
+        preorder(root->right);
+    }
+}
+
+// Postorder (Sol-Sağ-Kök)
+void postorder(Node* root) {
+    if (root != NULL) {
+        postorder(root->left);
+        postorder(root->right);
+        cout << root->data << " ";
+    }
+}
+```
+
+**5. Önemli Özellikler:**
+- Yükseklik h olan bir binary tree'de:
+  - Minimum düğüm sayısı: h + 1
+  - Maximum düğüm sayısı: 2^(h+1) - 1
+  - n düğümlü bir ağacın yüksekliği: ⌊log₂(n)⌋
+
+**6. Kullanım Alanları:**
+1. Expression parsing
+2. Huffman coding
+3. Binary Search Tree'nin temeli
+4. Syntax tree
+
+**7. Avantajları:**
+- Hiyerarşik veri yapısı
+- Kolay traversal
+- Etkili veri organizasyonu
+
+**8. Dezavantajları:**
+- Dengesiz olabilir
+- Bellek kullanımı fazla olabilir
+- Rastgele erişim yok
+
+**9. Örnek Implementasyon:**
+```cpp
+class Node {
+public:
+    int data;
+    Node* left;
+    Node* right;
+    
+    Node(int value) {
+        data = value;
+        left = NULL;
+        right = NULL;
+    }
+};
+
+class BinaryTree {
+private:
+    Node* root;
+    
+public:
+    BinaryTree() {
+        root = NULL;
+    }
+    
+    void insert(int value) {
+        // insertion logic
+    }
+    
+    bool search(int value) {
+        // search logic
+    }
+};
+```
+
+Bu temel bilgiler, binary tree veri yapısını anlamak ve kullanmak için yeterli olacaktır. Binary tree, diğer karmaşık tree yapılarının (BST, AVL, Red-Black) temelini oluşturduğu için iyi anlaşılması önemlidir.
+
+--------------------
+

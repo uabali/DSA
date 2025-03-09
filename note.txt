@@ -1,0 +1,38 @@
+Veri yapılarını temel başlıklar altında sıralayalım:
+
+1. **Primitive (İlkel) Veri Yapıları**
+   - Integer (Tamsayı)
+   - Float (Ondalıklı Sayı)
+   - Character (Karakter)
+   - Boolean (Mantıksal)
+   - Pointer (İşaretçi)
+
+2. **Linear (Doğrusal) Veri Yapıları**
+   - Array (Dizi)
+   - Linked List (Bağlı Liste)
+   - Stack (Yığın)
+   - Queue (Kuyruk)
+   - String (Karakter Dizisi)
+
+3. **Non-Linear (Doğrusal Olmayan) Veri Yapıları**
+   - Tree (Ağaç)
+     - Binary Tree (İkili Ağaç)
+     - Binary Search Tree (İkili Arama Ağacı)
+     - AVL Tree
+     - Red-Black Tree
+   - Graph (Çizge)
+     - Directed Graph (Yönlü Çizge)
+     - Undirected Graph (Yönsüz Çizge)
+     - Weighted Graph (Ağırlıklı Çizge)
+
+4. **Hash Based Structures (Hash Tabanlı Yapılar)**
+   - Hash Table (Hash Tablosu)
+   - Hash Map
+   - Hash Set
+
+5. **Advanced Data Structures (İleri Veri Yapıları)**
+   - Heap (Yığın)
+   - Trie (Önek Ağacı)
+   - B-Tree
+   - Segment Tree (Bölüm Ağacı)
+   - Disjoint Set (Ayrık Kümeler)
